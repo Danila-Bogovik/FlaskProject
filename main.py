@@ -3,17 +3,19 @@ import uuid
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
 from postgres import psycopg2
 from flask_jwt_extended import JWTManager
 from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt_identity, get_jwt
-
+from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = "somekey"
 app.config['JWT_SECRET_KEY'] = 'jwt-secret-string'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgre:1@localhost:5432/PostgreSQL_15/Databases/postgres'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1@localhost:5432/USERS'
+
 
 
 jwt = JWTManager(app)
@@ -31,7 +33,19 @@ api = Api()
 #вход в личный кабинет
 @app.route('/profile', methods=['GET'])
 def get_user_info():
-	return ""
+
+	users = User.query.all()
+
+	user_data = {}
+
+	for user in users:
+		user_data['id'] = user.id
+		user_data['role'] = user.role
+		user_data['name'] = user.name
+		user_data['surename'] = user.surename
+		user_data['password'] = user.password
+
+	return jsonify(user_data)
 
 #регистрация
 @app.route('/register', methods=['POST'])
@@ -45,8 +59,9 @@ def create_user():
 	db.session.add(new_user)
 	db.session.commit()
 
-	access_token = create_access_token(identity = data['username'])
-	refresh_token = create_refresh_token(identity = data['username'])
+	return "++"
+	# access_token = create_access_token(identity = data['username'])
+	# refresh_token = create_refresh_token(identity = data['username'])
 
 
 
