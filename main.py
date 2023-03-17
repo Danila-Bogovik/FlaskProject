@@ -31,9 +31,10 @@ def get_user_info():
 @app.route('/user', methods=['GET'])
 def create_user():
 	data = request.get_json()
-
-	hashed_password = generate_password_hash(data['password'])
-
+	hashed_password = generate_password_hash(data['password'], method = 'sha256')
+	
+	new_user = User(id=data['id'], name = data['name'], surename = data['surename'], 
+		password = hashed_password, role = data['role'])
 	return ""
 
 
