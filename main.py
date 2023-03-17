@@ -26,12 +26,6 @@ def
 
 
 
-
-class Main(Resource):
-	def get(self):
-		return {"info":"some info", "num":56}
-
-api.add_resource(Main, "/api/main")
 api.init_app(app)
 
 if __name__ == "__main__":
