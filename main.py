@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = "somekey"
 app.config['JWT_SECRET_KEY'] = 'jwt-secret-string'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgresql:1@localhost:5432/PostgreSQL_15'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgre:1@localhost:5432/PostgreSQL_15/Databases/postgres'
 
 
 jwt = JWTManager(app)
@@ -43,7 +43,12 @@ def create_user():
 		password = hashed_password, role = data['role'])
 
 	db.session.add(new_user)
-	db_session.commit()
+	db.session.commit()
+
+	access_token = create_access_token(identity = data['username'])
+	refresh_token = create_refresh_token(identity = data['username'])
+
+
 
 # вход в систему
 @app.route('/login', methods=['POST'])
