@@ -1,4 +1,6 @@
-from flask import Flask
+from flask import Flask, request, jsonify
+import uuid
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
 from postgres import psycopg2
@@ -20,9 +22,19 @@ class User(db.Model):
 
 api = Api()
 
+#вход в личный кабинет
+@app.route('/user', methods=['GET'])
+def get_user_info():
+	return ""
 
-@app.route()
-def 
+#регистрация
+@app.route('/user', methods=['GET'])
+def create_user():
+	data = request.get_json()
+
+	hashed_password = generate_password_hash(data['password'])
+
+	return ""
 
 
 
