@@ -4,13 +4,19 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
 from postgres import psycopg2
+from flask_jwt_extended import JWTManager
+from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt_identity, get_jwt
+
 
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = "somekey"
+app.config['JWT_SECRET_KEY'] = 'jwt-secret-string'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgresql:1@localhost:5432/PostgreSQL_15'
 
+
+jwt = JWTManager(app)
 db = SQLAlchemy(app)
 
 class User(db.Model):
@@ -28,7 +34,7 @@ def get_user_info():
 	return ""
 
 #регистрация
-@app.route('/register', methods=['GET'])
+@app.route('/register', methods=['POST'])
 def create_user():
 	data = request.get_json()
 	hashed_password = generate_password_hash(data['password'], method = 'sha256')
@@ -42,6 +48,12 @@ def create_user():
 		return jsonify({"message": 'Success!'})
 	except:
 		return jsonify({"message": 'Failed!'})
+
+
+# вход в систему
+@app.route('/login', methods=['POST'])
+def user_login():
+	return ""
 
 
 
