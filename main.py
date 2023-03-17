@@ -23,12 +23,12 @@ class User(db.Model):
 api = Api()
 
 #вход в личный кабинет
-@app.route('/user', methods=['GET'])
+@app.route('/profile', methods=['GET'])
 def get_user_info():
 	return ""
 
 #регистрация
-@app.route('/user', methods=['GET'])
+@app.route('/register', methods=['GET'])
 def create_user():
 	data = request.get_json()
 	hashed_password = generate_password_hash(data['password'], method = 'sha256')
