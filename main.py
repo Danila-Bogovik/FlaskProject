@@ -42,13 +42,8 @@ def create_user():
 	new_user = User(id=data['id'], name = data['name'], surename = data['surename'], 
 		password = hashed_password, role = data['role'])
 
-	try:
-		db.session.add(new_user)
-		db_session.commit()
-		return jsonify({"message": 'Success!'})
-	except:
-		return jsonify({"message": 'Failed!'})
-
+	db.session.add(new_user)
+	db_session.commit()
 
 # вход в систему
 @app.route('/login', methods=['POST'])
