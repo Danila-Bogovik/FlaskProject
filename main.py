@@ -59,10 +59,9 @@ def create_user():
 	db.session.add(new_user)
 	db.session.commit()
 
+	access_token = create_access_token(identity = data['username'])
+	refresh_token = create_refresh_token(identity = data['username'])
 	return "++"
-	# access_token = create_access_token(identity = data['username'])
-	# refresh_token = create_refresh_token(identity = data['username'])
-
 
 
 # вход в систему
