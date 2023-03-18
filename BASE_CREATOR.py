@@ -6,7 +6,7 @@ data = pd.DataFrame(excel_data)
 # Print the content
 lst = []
 
-dic = {'ь':'', 'ъ':'', 'а':'a', 'б':'b','в':'v',
+dickt = {'ь':'', 'ъ':'', 'а':'a', 'б':'b','в':'v',
        'г':'g', 'д':'d', 'е':'e', 'ё':'yo','ж':'zh',
        'з':'z', 'и':'i', 'й':'y', 'к':'k', 'л':'l',
        'м':'m', 'н':'n', 'о':'o', 'п':'p', 'р':'r', 
@@ -45,11 +45,11 @@ for i in data:
         
     t = ''
     for i in res:
-        t+=dic.get(i.lower(), i.lower()).upper() if i.isupper() else dic.get(i, i)
+        t+=dickt.get(i.lower(), i.lower()).upper() if i.isupper() else dickt.get(i, i)
     
     res = list(t)
         
-    lst.append(f"{''.join(res)} VARCHAR," + "\n")
+    lst.append(f"{''.join(res)} = db.Column(db.String(255))" + "\n")
 
 
 
