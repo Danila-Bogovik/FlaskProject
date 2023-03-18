@@ -49,7 +49,7 @@ for i in data:
     
     res = list(t)
         
-    lst.append(f"{''.join(res)} = db.Column(db.String(255))" + "\n")
+    lst.append(f"{''.join(res)} = data['{''.join(res)}']," + "\n")
 
 
 

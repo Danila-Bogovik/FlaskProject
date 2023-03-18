@@ -190,6 +190,219 @@ class data_set(db.Model):
 
 api = Api()
 
+
+
+@app.route('/upload', methods=['POST'])
+def upload_data():
+	data = request.get_json()
+
+	new_data = data_set(
+		
+ UES_ARM = data['UES_ARM'],
+ LTTS = data['LTTS'],
+ Nomer_zayavki = data['Nomer_zayavki'],
+ Nomer_paketnoy_zayavki_MPZ = data['Nomer_paketnoy_zayavki_MPZ'],
+ Vneshniy_istochnik_zayavki = data['Vneshniy_istochnik_zayavki'],
+ Nmr_zayavk_iz_vnesh_istochnika = data['Nmr_zayavk_iz_vnesh_istochnika'],
+ Klient = data['Klient'],
+ INN = data['INN'],
+ NLS = data['NLS'],
+ Region = data['Region'],
+ Indeks = data['Indeks'],
+ Administrativnyiy_rayon = data['Administrativnyiy_rayon'],
+ Naselennyiy_punkt = data['Naselennyiy_punkt'],
+ Ulitsa = data['Ulitsa'],
+ Dom = data['Dom'],
+ Korpus = data['Korpus'],
+ Kvartira = data['Kvartira'],
+ Adres_ustroystva = data['Adres_ustroystva'],
+ Status = data['Status'],
+ Data_vhoda_zayavki_v_status = data['Data_vhoda_zayavki_v_status'],
+ Zadacha_po_zayavke = data['Zadacha_po_zayavke'],
+ Usluga = data['Usluga'],
+ Kolichestvo_uslug = data['Kolichestvo_uslug'],
+ Dop_kanal_prodazh = data['Dop_kanal_prodazh'],
+ Tabelnyiy_nomer = data['Tabelnyiy_nomer'],
+ Naznachenie = data['Naznachenie'],
+ Kanal_prodazh = data['Kanal_prodazh'],
+ Segment = data['Segment'],
+ GTSSTS = data['GTSSTS'],
+ Data_obrascheniya = data['Data_obrascheniya'],
+ Data_registratsii_zayavki = data['Data_registratsii_zayavki'],
+ Data_registratsii_pod_zayavki = data['Data_registratsii_pod_zayavki'],
+ Reg_naryada_na_TVP = data['Reg_naryada_na_TVP'],
+ Zavershena_vruchnuyu = data['Zavershena_vruchnuyu'],
+ Prichina_otkaza_klienta = data['Prichina_otkaza_klienta'],
+ Operator_zavershivshiy_zayavku = data['Operator_zavershivshiy_zayavku'],
+ Data_otkloneniya_pod_zayavki = data['Data_otkloneniya_pod_zayavki'],
+ Otklonena = data['Otklonena'],
+ Tip_proverki_TVP = data['Tip_proverki_TVP'],
+ Nalichie_TVP = data['Nalichie_TVP'],
+ Zavershenie_proverki_TVP = data['Zavershenie_proverki_TVP'],
+ Dlit_proverki_TVP = data['Dlit_proverki_TVP'],
+ Norm_srok_proverki_TVP_chas = data['Norm_srok_proverki_TVP_chas'],
+ prevyish_norm_sroka_proverki_TVP = data['prevyish_norm_sroka_proverki_TVP'],
+ Tehnologiya = data['Tehnologiya'],
+ Sozdanie_dogovora = data['Sozdanie_dogovora'],
+ Data_registr_naryada_na_naznach_TD = data['Data_registr_naryada_na_naznach_TD'],
+ Naznachenie_TD = data['Naznachenie_TD'],
+ Tip_Naznacheniya_TD = data['Tip_Naznacheniya_TD'],
+ Dlit_naznacheniya_TD = data['Dlit_naznacheniya_TD'],
+ Norm_srok_naznacheniya_TD_chas = data['Norm_srok_naznacheniya_TD_chas'],
+ prevyish_norm_sroka_naznacheniya_TD = data['prevyish_norm_sroka_naznacheniya_TD'],
+ Data_cogl_vrem_vyiezd_instal_perv = data['Data_cogl_vrem_vyiezd_instal_perv'],
+ Soglapodklta_podkl_pervaya = data['Soglapodklta_podkl_pervaya'],
+ Soglasovannaya_data_podkl = data['Soglasovannaya_data_podkl'],
+ Zakryitie_naryada_na_podkl = data['Zakryitie_naryada_na_podkl'],
+ Norm_srok_podkl_dni = data['Norm_srok_podkl_dni'],
+ Prevyishenie_norm_sroka_podkl = data['Prevyishenie_norm_sroka_podkl'],
+ Prevyipodkl_sroka_podkl__dni = data['Prevyipodkl_sroka_podkl__dni'],
+ Data_vyipolneniya_agentom = data['Data_vyipolneniya_agentom'],
+ Data_peredachi_agentu = data['Data_peredachi_agentu'],
+ Instalyator = data['Instalyator'],
+ Agent_installyator = data['Agent_installyator'],
+ Dlitpodklya_ot_reg_zayavki_v_IS = data['Dlitpodklya_ot_reg_zayavki_v_IS'],
+ Dlitpodklya_ot_reg_zayavki_v_IS_dni = data['Dlitpodklya_ot_reg_zayavki_v_IS_dni'],
+ Kol_vo_perenosov_srokov = data['Kol_vo_perenosov_srokov'],
+ Opisanie_prichinyi_perenosa_srokov = data['Opisanie_prichinyi_perenosa_srokov'],
+ Prichina_perenosa_srokov = data['Prichina_perenosa_srokov'],
+ Annulirovan_pri_nalichii_TVP = data['Annulirovan_pri_nalichii_TVP'],
+ Vyisvobozhdenie_nazn_TD = data['Vyisvobozhdenie_nazn_TD'],
+ Dlitelnost_rezervir_TD = data['Dlitelnost_rezervir_TD'],
+ Data_nachala_deystv_dogovora_KURS = data['Data_nachala_deystv_dogovora_KURS'],
+ Sertifikat_OTA = data['Sertifikat_OTA'],
+ Sertifikat_OTA_aktivirovan = data['Sertifikat_OTA_aktivirovan'],
+ Sertifikat_OTA_otklonen = data['Sertifikat_OTA_otklonen'],
+ Sertifikat_Internet = data['Sertifikat_Internet'],
+ Sertifikat_Internet_aktivirovan = data['Sertifikat_Internet_aktivirovan'],
+ Sertifikat_Internet_otklonen = data['Sertifikat_Internet_otklonen'],
+ Sertifikat_IPTV = data['Sertifikat_IPTV'],
+ Sertifikat_IPTV_aktivirovan = data['Sertifikat_IPTV_aktivirovan'],
+ Sertifikat_IPTV_otklonen = data['Sertifikat_IPTV_otklonen'],
+ Kommentariy_TVP_OTA = data['Kommentariy_TVP_OTA'],
+ Kommentariy_TVP_SHPD = data['Kommentariy_TVP_SHPD'],
+ Operator_zavodivshiy_zayavku = data['Operator_zavodivshiy_zayavku'],
+ Kategoriya_uslugi_PK = data['Kategoriya_uslugi_PK'],
+ Internet = data['Internet'],
+ IP_TV = data['IP_TV'],
+ OTA = data['OTA'],
+ Pryamoy_provod = data['Pryamoy_provod'],
+ Fly = data['Fly'],
+ MVNO = data['MVNO'],
+ Kolichestvo_SIM_kart = data['Kolichestvo_SIM_kart'],
+ Nachalo_zadachi_Dop_TO = data['Nachalo_zadachi_Dop_TO'],
+ Okonchanie_zadachi_Dop_TO = data['Okonchanie_zadachi_Dop_TO'],
+ LS_Onima = data['LS_Onima'],
+ Prichinyi_otsutstviya_TVP = data['Prichinyi_otsutstviya_TVP'],
+ Prichinyi_otsutstviya_TVP_IPTV = data['Prichinyi_otsutstviya_TVP_IPTV'],
+ ID_Dogovor_KURS = data['ID_Dogovor_KURS'],
+ Nomer_dogovora_KURS = data['Nomer_dogovora_KURS'],
+ Dlitelnost_Dop_TO_dney = data['Dlitelnost_Dop_TO_dney'],
+ Normsrok_Dop_TO_dney = data['Normsrok_Dop_TO_dney'],
+ Naryad_KURS = data['Naryad_KURS'],
+ Data_zakryitiya_naryada_KURS = data['Data_zakryitiya_naryada_KURS'],
+ Naryad_IPTV_KURS = data['Naryad_IPTV_KURS'],
+ Data_otkryitiya_naryada_KURS = data['Data_otkryitiya_naryada_KURS'],
+ Data_zakryitiya_naryada_IPTV_KURS = data['Data_zakryitiya_naryada_IPTV_KURS'],
+ Nomer_OTA_SHPD = data['Nomer_OTA_SHPD'],
+ Data_otkryitiya_naryada_IPTV_KURS = data['Data_otkryitiya_naryada_IPTV_KURS'],
+ Primechanie = data['Primechanie'],
+ Kontaktnyiy_telefon = data['Kontaktnyiy_telefon'],
+ Kontaktnoe_litso = data['Kontaktnoe_litso'],
+ Fiz_litso = data['Fiz_litso'],
+ YUr_litso = data['YUr_litso'],
+ Zakryitie_naryada_installyatorom = data['Zakryitie_naryada_installyatorom'],
+ №_zadachi_vrnet_TVP = data['№_zadachi_vrnet_TVP'],
+ VIP_klient = data['VIP_klient'],
+ Stoimost_TP_SHPD = data['Stoimost_TP_SHPD'],
+ Stoimost_TP_IPTV = data['Stoimost_TP_IPTV'],
+ FIO_sotrudnika_sozdavshego_dogovor = data['FIO_sotrudnika_sozdavshego_dogovor'],
+ Tarifnyiy_plan_IPTV = data['Tarifnyiy_plan_IPTV'],
+ Nomer_kartyi_dostupa = data['Nomer_kartyi_dostupa'],
+ Nomer_kartyi_dostupa_IPTV = data['Nomer_kartyi_dostupa_IPTV'],
+ Tarifnyiy_plan = data['Tarifnyiy_plan'],
+ Data_privyazki_kartyi_v_Onyma_SHPD = data['Data_privyazki_kartyi_v_Onyma_SHPD'],
+ Data_privyazki_kartyi_v_Onyma_IPTV = data['Data_privyazki_kartyi_v_Onyma_IPTV'],
+ Data_aktivatsii_uslugi_v_Onyma_SHPD = data['Data_aktivatsii_uslugi_v_Onyma_SHPD'],
+ Data_aktivatsii_uslugi_v_Onyma_IPTV = data['Data_aktivatsii_uslugi_v_Onyma_IPTV'],
+ Srok_zaversheniya_ustanovki_WFM = data['Srok_zaversheniya_ustanovki_WFM'],
+ Uchastok_WFM = data['Uchastok_WFM'],
+ Sozdano_sotrudnikom_RRS = data['Sozdano_sotrudnikom_RRS'],
+ TSPO = data['TSPO'],
+ Uslugi = data['Uslugi'],
+ Promo_aktsii = data['Promo_aktsii'],
+ Tip_klienta_dlya_OSV = data['Tip_klienta_dlya_OSV'],
+ Kanal_postupleniya_zayavki = data['Kanal_postupleniya_zayavki'],
+ Nomer_zakaza_CMS = data['Nomer_zakaza_CMS'],
+ Primechanie_pri_otkl = data['Primechanie_pri_otkl'],
+ Germes_APTV = data['Germes_APTV'],
+ Zayavka_ARM_20 = data['Zayavka_ARM_20'],
+ №_klientskiy_SUS = data['№_klientskiy_SUS'],
+ №_stroitelnyiy_SUS = data['№_stroitelnyiy_SUS'],
+ Etap_SUS = data['Etap_SUS'],
+ Migratsiya_YUL = data['Migratsiya_YUL'],
+ Proekt_SUS_Germes = data['Proekt_SUS_Germes'],
+ Ferrari = data['Ferrari'],
+ Ferrari_BZ = data['Ferrari_BZ'],
+ Data_otpravki_na_APTV = data['Data_otpravki_na_APTV'],
+ Data_okonchaniya_APTV_planiruemaya = data['Data_okonchaniya_APTV_planiruemaya'],
+ Data_okonchaniya_APTV_fakticheskaya = data['Data_okonchaniya_APTV_fakticheskaya'],
+ Dlitelnost_etapa_APTV = data['Dlitelnost_etapa_APTV'],
+ Data_otpravki_na_DO = data['Data_otpravki_na_DO'],
+ Data_okonchaniya_DO_planiruemaya = data['Data_okonchaniya_DO_planiruemaya'],
+ Data_okonchaniya_DO_fakticheskaya = data['Data_okonchaniya_DO_fakticheskaya'],
+ Dlitelnost_etapa_DO = data['Dlitelnost_etapa_DO'],
+ Bronirovanie_cherez_Germes = data['Bronirovanie_cherez_Germes'],
+ Bronirovanie_cherez_Argus_ruchnoe = data['Bronirovanie_cherez_Argus_ruchnoe'],
+ Svetofor_Germes_APTV = data['Svetofor_Germes_APTV'],
+ GID_doma_ORPON = data['GID_doma_ORPON'],
+ Paketnoe_reshenie = data['Paketnoe_reshenie'],
+ Marker_paketa = data['Marker_paketa'],
+ Dopusluga_1 = data['Dopusluga_1'],
+ Dopusluga_2 = data['Dopusluga_2'],
+ Dopusluga_3 = data['Dopusluga_3'],
+ Zayavka_cherez_EPK = data['Zayavka_cherez_EPK'],
+ Novyiy_klient = data['Novyiy_klient'] )
+
+	db.session.add(new_user)
+	db.session.commit()
+
+	access_token = create_access_token(identity = data['username'])
+	refresh_token = create_refresh_token(identity = data['username'])
+	return "++"
+
+
+api.init_app(app)
+
+
+if __name__ == "__main__":
+	app.run(debug=True, port=3000, host="127.0.0.1")
+
+
+
+
+
+# ВНИЗУ МАТЕРИАЛ ДЛЯ РАБОТЫ, НЕ КОД
+
+
+
+
+
+
+
+
+
+
+class User(db.Model):
+	id = db.Column(db.Integer, primary_key = True)
+	role = db.Column(db.Integer)
+	name = db.Column(db.String(50))
+	surename = db.Column(db.String(50))
+	password = db.Column(db.String(80))
+	icon_link = db.Column(db.String(255))
+
+api = Api()
+
 #вход в личный кабинет
 @app.route('/profile', methods=['GET'])
 def get_user_info():
@@ -207,11 +420,12 @@ def get_user_info():
 
 	return jsonify(user_data)
 
-
-@app.route('/upload', methods=['POST'])
-def upload_data():
+#регистрация
+@app.route('/register', methods=['POST'])
+def create_user():
 	data = request.get_json()
-
+	hashed_password = generate_password_hash(data['password'], method = 'sha256')
+	
 	new_user = User(id=data['id'], name = data['name'], surename = data['surename'], 
 		password = hashed_password, role = data['role'])
 
@@ -230,8 +444,33 @@ def user_login():
 
 
 
-api.init_app(app)
 
 
-if __name__ == "__main__":
-	app.run(debug=True, port=3000, host="127.0.0.1")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
