@@ -19,6 +19,9 @@ for i in data:
     for k in i:
         if k == " " or k == "-":
             res.append("_")   
+
+        elif k == "№":
+            res.append("N")
         elif k in "*.!?,:;#/\//\\+=()'" or k == '"':
             res.append("")  
         else:
@@ -49,7 +52,7 @@ for i in data:
     
     res = list(t)
         
-    lst.append(f"{''.join(res)} = data['{''.join(res)}']," + "\n")
+    lst.append(f'"{"".join(res).lower()}" : "sdfs",')
 
 
 
