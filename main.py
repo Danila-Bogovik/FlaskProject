@@ -383,7 +383,7 @@ def send_data():
 		data = db.session.execute(text(f'SELECT * FROM data_set WHERE idd = {idd};'))
 	elif nomer_zayavki:
 		data = db.session.execute(text(f'SELECT * FROM data_set WHERE nomer_zayavki = {nomer_zayavki};'))
-	
+
 	return jsonify(data)
 
 
@@ -415,54 +415,54 @@ if __name__ == "__main__":
 
 
 
-class User(db.Model):
-	id = db.Column(db.Integer, primary_key = True)
-	role = db.Column(db.Integer)
-	name = db.Column(db.String(50))
-	surename = db.Column(db.String(50))
-	password = db.Column(db.String(80))
-	icon_link = db.Column(db.String(255))
+# class User(db.Model):
+# 	id = db.Column(db.Integer, primary_key = True)
+# 	role = db.Column(db.Integer)
+# 	name = db.Column(db.String(50))
+# 	surename = db.Column(db.String(50))
+# 	password = db.Column(db.String(80))
+# 	icon_link = db.Column(db.String(255))
 
-api = Api()
+# api = Api()
 
-#вход в личный кабинет
-@app.route('/profile', methods=['GET'])
-def get_user_info():
+# #вход в личный кабинет
+# @app.route('/profile', methods=['GET'])
+# def get_user_info():
 
-	users = User.query.all()
+# 	users = User.query.all()
 
-	user_data = {}
+# 	user_data = {}
 
-	for user in users:
-		user_data['id'] = user.id
-		user_data['role'] = user.role
-		user_data['name'] = user.name
-		user_data['surename'] = user.surename
-		user_data['password'] = user.password
+# 	for user in users:
+# 		user_data['id'] = user.id
+# 		user_data['role'] = user.role
+# 		user_data['name'] = user.name
+# 		user_data['surename'] = user.surename
+# 		user_data['password'] = user.password
 
-	return jsonify(user_data)
+# 	return jsonify(user_data)
 
-#регистрация
-@app.route('/register', methods=['POST'])
-def create_user():
-	data = request.get_json()
-	hashed_password = generate_password_hash(data['password'], method = 'sha256')
+# #регистрация
+# @app.route('/register', methods=['POST'])
+# def create_user():
+# 	data = request.get_json()
+# 	hashed_password = generate_password_hash(data['password'], method = 'sha256')
 	
-	new_user = User(id=data['id'], name = data['name'], surename = data['surename'], 
-		password = hashed_password, role = data['role'])
+# 	new_user = User(id=data['id'], name = data['name'], surename = data['surename'], 
+# 		password = hashed_password, role = data['role'])
 
-	db.session.add(new_user)
-	db.session.commit()
+# 	db.session.add(new_user)
+# 	db.session.commit()
 
-	access_token = create_access_token(identity = data['username'])
-	refresh_token = create_refresh_token(identity = data['username'])
-	return "++"
+# 	access_token = create_access_token(identity = data['username'])
+# 	refresh_token = create_refresh_token(identity = data['username'])
+# 	return "++"
 
 
-# вход в систему
-@app.route('/login', methods=['POST'])
-def user_login():
-	return ""
+# # вход в систему
+# @app.route('/login', methods=['POST'])
+# def user_login():
+# 	return ""
 
 
 
