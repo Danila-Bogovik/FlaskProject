@@ -374,18 +374,17 @@ def upload_data():
 
 @app.route('/request', methods=['GET'])
 def send_data():
-	id = request.args.get('id')
+	idd = request.args.get('id')
+	nomer_zayavki = str(request.args.get('order'))
 
-	data = db.session.execute(text(f'SELECT idd, inn, nomer_zayavki, klient FROM data_set WHERE idd = {id};'))
-	user_data = {}
+	data = {}
 
-	for d in data:
-		user_data['idd'] = d.idd
-		user_data['inn'] = d.inn
-		user_data['order'] = d.nomer_zayavki
-		user_data['name'] = d.klient
-
-	return jsonify(user_data)
+	if idd:
+		data = db.session.execute(text(f'SELECT * FROM data_set WHERE idd = {idd};'))
+	elif nomer_zayavki:
+		data = db.session.execute(text(f'SELECT * FROM data_set WHERE nomer_zayavki = {nomer_zayavki};'))
+	
+	return jsonify(data)
 
 
 
