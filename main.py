@@ -8,6 +8,8 @@ from postgres import psycopg2
 from flask_jwt_extended import JWTManager
 from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt_identity, get_jwt
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+from sqlalchemy import text
+
 
 
 app = Flask(__name__)
@@ -17,10 +19,10 @@ app.config['JWT_SECRET_KEY'] = 'jwt-secret-string'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1@localhost:5432/users'
 
 api = Api()
-
 db = SQLAlchemy(app)
 
 class data_set(db.Model):
+	idd = db.Column(db.Integer())
 	ues_arm = db.Column(db.String(255)) 
 	ltts = db.Column(db.String(255)) 
 	nomer_zayavki = db.Column(db.String(255), primary_key = True)
@@ -196,6 +198,7 @@ def upload_data():
 
 	new_data = data_set(
 
+	idd = data["idd"],
 	ues_arm = data['ues_arm'],
 	ltts = data['ltts'],
 	nomer_zayavki = data['nomer_zayavki'],
@@ -369,21 +372,20 @@ def upload_data():
 	return "++"
 
 
-# @app.route('/request', methods=['GET'])
-# def send_data():
+@app.route('/request', methods=['GET'])
+def send_data():
+	id = request.args.get('id')
 
-# data = data_set.query.all()
+	data = db.session.execute(text(f'SELECT idd, inn, nomer_zayavki, klient FROM data_set WHERE idd = {id};'))
+	user_data = {}
 
-# 	user_data = {}
+	for d in data:
+		user_data['idd'] = d.idd
+		user_data['inn'] = d.inn
+		user_data['order'] = d.nomer_zayavki
+		user_data['name'] = d.klient
 
-# 	for user in data:
-# 		user_data['id'] = user.id
-# 		user_data['role'] = user.role
-# 		user_data['name'] = user.name
-# 		user_data['surename'] = user.surename
-# 		user_data['password'] = user.password
-
-# 	return jsonify(user_data)
+	return jsonify(user_data)
 
 
 

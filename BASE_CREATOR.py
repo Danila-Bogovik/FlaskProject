@@ -52,7 +52,7 @@ for i in data:
     
     res = list(t)
         
-    lst.append(f"{''.join(res).lower()} = db.Column(db.String(255)) " + "\n")
+    lst.append(f"{''.join(res).lower()} = db.Column(db.String(255)), " + "\n")
 
 
 
