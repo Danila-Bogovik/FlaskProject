@@ -218,7 +218,7 @@ def upload_data():
 	kvartira = data['kvartira'],
 	adres_ustroystva = data['adres_ustroystva'],
 	status = data['status'],
-	data_vhoda_zayavki_v_status = data['data_vhoda_zayavki_v_status'],
+	data_vhoda_zayavki_v_status = data['data_vhoda_zayavki_v_status'], ####
 	zadacha_po_zayavke = data['zadacha_po_zayavke'],
 	usluga = data['usluga'],
 	kolichestvo_uslug = data['kolichestvo_uslug'],
@@ -368,7 +368,6 @@ def upload_data():
 
 	db.session.add(new_data)
 	db.session.commit()
-
 	return "++"
 
 
@@ -387,12 +386,13 @@ def send_data():
 	return jsonify(data)
 
 
+
 api.init_app(app)
 
 
 
 if __name__ == "__main__":
-	app.run(debug=True, port=config.config["port"], host=config.config"host")
+	app.run(app.run(host=config.config['host'], port=config.config['port'], debug=True))
 
 
 
